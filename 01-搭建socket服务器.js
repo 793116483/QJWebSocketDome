@@ -11,8 +11,17 @@ var serverSocket = socketIo(server);
 
 serverSocket.on('connection',function listener(clietSocket){
 
-    console.log(serverSocket , clietSocket);
+    console.log('建立连接成功');
 
+    clietSocket.emit('connection','success');
+    
+    // 必须在完成连接后，监听 clientSocket 的 chat 事件 
+    clietSocket.on('chat',function listener(data){
+        console.log('========',data);
+
+        clietSocket.emit('chat','Im fine ,thanks!!');
+        
+    });
 });
 
 // 监听
