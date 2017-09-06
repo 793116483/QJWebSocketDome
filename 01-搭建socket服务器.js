@@ -13,6 +13,9 @@ serverSocket.on('connection',function listener(clietSocket){
 
     console.log('建立连接成功');
 
+    // 客户端发送
+    // serverSocket.emit : 表示广播，给所有连接到服务器的客户端发送数据
+    //  clietSocket.emit  : 给当前的客户端发送数据
     clietSocket.emit('connection','success');
     
     // 必须在完成连接后，监听 clientSocket 的 chat 事件 
