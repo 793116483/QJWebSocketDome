@@ -8,11 +8,9 @@
 
 #import "ViewController.h"
 
-#import <SocketIO/SocketIO-Swift.h>
+#import "SocketIOClient+QJSocket.h"
 
 @interface ViewController ()
-
-@property(nonatomic , strong) SocketIOClient *clientSocket ;
 
 @end
 
@@ -21,25 +19,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSString * urlStr = @"http://192.168.31.200:8080";
-    NSURL * url = [NSURL URLWithString:urlStr];
+    SocketIOClient * socketIOClient = [SocketIOClient shareSocketIOClient] ;
     
-    SocketIOClient * clientSocket = [[SocketIOClient alloc] initWithSocketURL:url config:nil];
-    self.clientSocket = clientSocket ;
-    
-    [clientSocket on:@"connection" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
+    [socketIOClient connectWithSuccessBlock:^(NSArray *data){
         
-        NSLog(@"data = %@ , ack = %@",data,ack);
+        NSLog(@"data = %@ ",data);
         
-        [clientSocket emit:@"chat" with:@[@"how are you?"]];
+        [socketIOClient emit:@"chat" with:@[@"how are you?"]];
         
     }];
     
-    [clientSocket on:@"chat" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
+    [socketIOClient on:@"chat" callback:^(NSArray * data, SocketAckEmitter * ack) {
         NSLog(@"data = %@ , ack = %@",data,ack);
     }];
-    
-    [clientSocket connect];
 }
 
 

@@ -19,6 +19,7 @@
 		F2E804E01F6036AF00BD5D1F /* socketClientDomeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804DF1F6036AF00BD5D1F /* socketClientDomeUITests.m */; };
 		F2E804EF1F603A9800BD5D1F /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E804ED1F603A9800BD5D1F /* SocketIO.framework */; };
 		F2E804F01F603A9800BD5D1F /* StarscreamSocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E804EE1F603A9800BD5D1F /* StarscreamSocketIO.framework */; };
+		F2E804F31F6055D000BD5D1F /* SocketIOClient+QJSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804F21F6055D000BD5D1F /* SocketIOClient+QJSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		F2E804E11F6036AF00BD5D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2E804ED1F603A9800BD5D1F /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = "../../../../Library/Developer/Xcode/DerivedData/socketClientDome-falxolklgzsatcdnntuktqnitazv/Build/Products/Debug-iphonesimulator/Socket.IO-Client-Swift/SocketIO.framework"; sourceTree = "<group>"; };
 		F2E804EE1F603A9800BD5D1F /* StarscreamSocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StarscreamSocketIO.framework; path = "../../../../Library/Developer/Xcode/DerivedData/socketClientDome-falxolklgzsatcdnntuktqnitazv/Build/Products/Debug-iphonesimulator/StarscreamSocketIO/StarscreamSocketIO.framework"; sourceTree = "<group>"; };
+		F2E804F11F6055D000BD5D1F /* SocketIOClient+QJSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketIOClient+QJSocket.h"; sourceTree = "<group>"; };
+		F2E804F21F6055D000BD5D1F /* SocketIOClient+QJSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SocketIOClient+QJSocket.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 				F2E804CB1F6036AF00BD5D1F /* Info.plist */,
 				F2E804C31F6036AF00BD5D1F /* socketClientDome.xcdatamodeld */,
 				F2E804B71F6036AF00BD5D1F /* Supporting Files */,
+				F2E804F11F6055D000BD5D1F /* SocketIOClient+QJSocket.h */,
+				F2E804F21F6055D000BD5D1F /* SocketIOClient+QJSocket.m */,
 			);
 			path = socketClientDome;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				F2E804BC1F6036AF00BD5D1F /* AppDelegate.m in Sources */,
 				F2E804C51F6036AF00BD5D1F /* socketClientDome.xcdatamodeld in Sources */,
 				F2E804B91F6036AF00BD5D1F /* main.m in Sources */,
+				F2E804F31F6055D000BD5D1F /* SocketIOClient+QJSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
