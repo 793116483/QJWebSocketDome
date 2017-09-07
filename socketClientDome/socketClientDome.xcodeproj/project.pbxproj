@@ -10,6 +10,7 @@
 		10328331D86949122D8F69F7 /* Pods_socketClientDome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170608BD3F1C4A9D7497FD10 /* Pods_socketClientDome.framework */; };
 		F246F8531F611839003C7F2E /* JSQMessagesViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F246F8511F611839003C7F2E /* JSQMessagesViewController.framework */; };
 		F246F8541F611839003C7F2E /* JSQSystemSoundPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F246F8521F611839003C7F2E /* JSQSystemSoundPlayer.framework */; };
+		F246F8571F61198E003C7F2E /* QJMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F246F8561F61198E003C7F2E /* QJMessagesViewController.m */; };
 		F2E804B91F6036AF00BD5D1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804B81F6036AF00BD5D1F /* main.m */; };
 		F2E804BC1F6036AF00BD5D1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804BB1F6036AF00BD5D1F /* AppDelegate.m */; };
 		F2E804BF1F6036AF00BD5D1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804BE1F6036AF00BD5D1F /* ViewController.m */; };
@@ -47,6 +48,8 @@
 		C60A6BC23B61DFEF55EE28DE /* Pods-socketClientDome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socketClientDome.release.xcconfig"; path = "Pods/Target Support Files/Pods-socketClientDome/Pods-socketClientDome.release.xcconfig"; sourceTree = "<group>"; };
 		F246F8511F611839003C7F2E /* JSQMessagesViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessagesViewController.framework; path = "Pods/../build/Debug-iphoneos/JSQMessagesViewController/JSQMessagesViewController.framework"; sourceTree = "<group>"; };
 		F246F8521F611839003C7F2E /* JSQSystemSoundPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQSystemSoundPlayer.framework; path = "Pods/../build/Debug-iphoneos/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"; sourceTree = "<group>"; };
+		F246F8551F61198E003C7F2E /* QJMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJMessagesViewController.h; sourceTree = "<group>"; };
+		F246F8561F61198E003C7F2E /* QJMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJMessagesViewController.m; sourceTree = "<group>"; };
 		F2E804B41F6036AF00BD5D1F /* socketClientDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socketClientDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E804B81F6036AF00BD5D1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2E804BA1F6036AF00BD5D1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				F2E804B71F6036AF00BD5D1F /* Supporting Files */,
 				F2E804F11F6055D000BD5D1F /* SocketIOClient+QJSocket.h */,
 				F2E804F21F6055D000BD5D1F /* SocketIOClient+QJSocket.m */,
+				F246F8551F61198E003C7F2E /* QJMessagesViewController.h */,
+				F246F8561F61198E003C7F2E /* QJMessagesViewController.m */,
 			);
 			path = socketClientDome;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E804BF1F6036AF00BD5D1F /* ViewController.m in Sources */,
+				F246F8571F61198E003C7F2E /* QJMessagesViewController.m in Sources */,
 				F2E804BC1F6036AF00BD5D1F /* AppDelegate.m in Sources */,
 				F2E804C51F6036AF00BD5D1F /* socketClientDome.xcdatamodeld in Sources */,
 				F2E804B91F6036AF00BD5D1F /* main.m in Sources */,
