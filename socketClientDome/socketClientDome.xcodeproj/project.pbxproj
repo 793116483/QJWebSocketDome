@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		10328331D86949122D8F69F7 /* Pods_socketClientDome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170608BD3F1C4A9D7497FD10 /* Pods_socketClientDome.framework */; };
+		F246F8531F611839003C7F2E /* JSQMessagesViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F246F8511F611839003C7F2E /* JSQMessagesViewController.framework */; };
+		F246F8541F611839003C7F2E /* JSQSystemSoundPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F246F8521F611839003C7F2E /* JSQSystemSoundPlayer.framework */; };
 		F2E804B91F6036AF00BD5D1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804B81F6036AF00BD5D1F /* main.m */; };
 		F2E804BC1F6036AF00BD5D1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804BB1F6036AF00BD5D1F /* AppDelegate.m */; };
 		F2E804BF1F6036AF00BD5D1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804BE1F6036AF00BD5D1F /* ViewController.m */; };
@@ -43,6 +45,8 @@
 		170608BD3F1C4A9D7497FD10 /* Pods_socketClientDome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_socketClientDome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95300E1366A18A57EDED42BE /* Pods-socketClientDome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socketClientDome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-socketClientDome/Pods-socketClientDome.debug.xcconfig"; sourceTree = "<group>"; };
 		C60A6BC23B61DFEF55EE28DE /* Pods-socketClientDome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-socketClientDome.release.xcconfig"; path = "Pods/Target Support Files/Pods-socketClientDome/Pods-socketClientDome.release.xcconfig"; sourceTree = "<group>"; };
+		F246F8511F611839003C7F2E /* JSQMessagesViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessagesViewController.framework; path = "Pods/../build/Debug-iphoneos/JSQMessagesViewController/JSQMessagesViewController.framework"; sourceTree = "<group>"; };
+		F246F8521F611839003C7F2E /* JSQSystemSoundPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQSystemSoundPlayer.framework; path = "Pods/../build/Debug-iphoneos/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"; sourceTree = "<group>"; };
 		F2E804B41F6036AF00BD5D1F /* socketClientDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socketClientDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E804B81F6036AF00BD5D1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2E804BA1F6036AF00BD5D1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F246F8531F611839003C7F2E /* JSQMessagesViewController.framework in Frameworks */,
+				F246F8541F611839003C7F2E /* JSQSystemSoundPlayer.framework in Frameworks */,
 				F2E804EF1F603A9800BD5D1F /* SocketIO.framework in Frameworks */,
 				F2E804F01F603A9800BD5D1F /* StarscreamSocketIO.framework in Frameworks */,
 				10328331D86949122D8F69F7 /* Pods_socketClientDome.framework in Frameworks */,
@@ -97,6 +103,8 @@
 		2F942B79219BBFDB5E73295D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F246F8511F611839003C7F2E /* JSQMessagesViewController.framework */,
+				F246F8521F611839003C7F2E /* JSQSystemSoundPlayer.framework */,
 				F2E804ED1F603A9800BD5D1F /* SocketIO.framework */,
 				F2E804EE1F603A9800BD5D1F /* StarscreamSocketIO.framework */,
 				170608BD3F1C4A9D7497FD10 /* Pods_socketClientDome.framework */,
@@ -340,11 +348,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-socketClientDome/Pods-socketClientDome-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/StarscreamSocketIO/StarscreamSocketIO.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarscreamSocketIO.framework",
 			);
@@ -530,6 +542,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 46S98ZE7K8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/JSQMessagesViewController",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/JSQSystemSoundPlayer",
+				);
 				INFOPLIST_FILE = socketClientDome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yiniu.app.socketClientDome;
@@ -543,6 +560,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 46S98ZE7K8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/JSQMessagesViewController",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/JSQSystemSoundPlayer",
+				);
 				INFOPLIST_FILE = socketClientDome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yiniu.app.socketClientDome;
