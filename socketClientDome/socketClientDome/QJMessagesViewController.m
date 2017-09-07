@@ -81,6 +81,9 @@
         [self.messageDatas addObject:message];
         
         [self.collectionView reloadData];
+        
+        // 完成接收信息，让接收到最新的信息显示在底部，信息不会被遮档
+        [self finishReceivingMessageAnimated:YES];
     }];
 }
 
