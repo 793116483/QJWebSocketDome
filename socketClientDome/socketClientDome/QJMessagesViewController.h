@@ -8,6 +8,10 @@
 
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
 
+@class QJUserModel ;
+
 @interface QJMessagesViewController : JSQMessagesViewController
+
+@property (nonatomic , strong)QJUserModel * userModel ;
 
 @end

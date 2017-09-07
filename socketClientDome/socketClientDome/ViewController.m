@@ -9,7 +9,13 @@
 #import "ViewController.h"
 #import "SocketIOClient+QJSocket.h"
 
+#import "QJMessagesViewController.h"
+#import "QJUserModel.h"
+
 @interface ViewController ()
+
+@property(nonatomic , strong) UITextField * accountTF ;
+@property(nonatomic , strong) UIButton * loginBtn ;
 
 @end
 
@@ -18,7 +24,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"登录";
     
+    [self addSubviews];
+}
+
+-(void)addSubviews
+{
+    self.accountTF = [[UITextField alloc] initWithFrame:CGRectMake(80,100, 150, 40)];
+    self.accountTF.layer.cornerRadius = 4 ;
+    self.accountTF.layer.borderWidth = 0.5 ;
+    self.accountTF.layer.borderColor = [UIColor grayColor].CGColor;
+    [self.view addSubview:self.accountTF];
+    
+    self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.loginBtn.frame = CGRectMake(80, 180, 150, 50);
+    self.loginBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [self.loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.loginBtn addTarget:self action:@selector(loginBtnDidClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.loginBtn];
+    
+}
+-(void)loginBtnDidClicked
+{
+    QJMessagesViewController * messagesVc = [[QJMessagesViewController alloc] init];
+    
+    messagesVc.userModel = [QJUserModel userModelWithName:self.accountTF.text];
+    
+    [self.navigationController pushViewController:messagesVc animated:YES];
 }
 
 
