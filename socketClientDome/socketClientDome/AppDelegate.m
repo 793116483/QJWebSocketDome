@@ -34,7 +34,7 @@
     
     [self.window makeKeyAndVisible];
     
-    // 连接
+    // 连接 Socket 服务器
     [[SocketIOClient shareSocketIOClient] connectWithSuccessBlock:^(NSArray *data) {
         
         NSLog(@"socket 连接成功 ，data = %@",data);
