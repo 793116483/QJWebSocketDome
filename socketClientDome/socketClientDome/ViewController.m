@@ -34,6 +34,8 @@
 -(void)addSubviews
 {
     self.accountTF = [[UITextField alloc] initWithFrame:CGRectMake(80,100, 150, 40)];
+    self.accountTF.placeholder = @"请输入聊天名称";
+    self.accountTF.contentMode = UIViewContentModeLeft ;
     self.accountTF.layer.cornerRadius = 4 ;
     self.accountTF.layer.borderWidth = 0.5 ;
     self.accountTF.layer.borderColor = [UIColor grayColor].CGColor;
@@ -50,6 +52,8 @@
 }
 -(void)loginBtnDidClicked
 {
+    [self.accountTF resignFirstResponder];
+    
     QJUserModel * userModel = [QJUserModel userModelWithName:self.accountTF.text];
     if ([userModel.userName isEqualToString:self.userModel.userName]) {
         userModel.userId = self.userModel.userId ;

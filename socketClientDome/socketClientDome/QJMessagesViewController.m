@@ -174,17 +174,10 @@
 // 按了发送信息按钮 , 这里是按正常的用户逻辑是 需要把信息发到服务器之后才显示
 -(void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date
 {
-    // 添加 当前用户发出的数据
-    QJMessage * message = [QJMessage messageWithSenderId:senderId displayName:senderDisplayName text:text date:date isCurrentUser:YES];
-    [self.messageDatas addObject:message];
-    [self.collectionView reloadData];
-    
     // 将发送的信息 转成 字典 传到服务器上
     NSString * dateStr = [self dateStringWithDate:date];
     QJHandleMessageModel * model = [QJHandleMessageModel handleMessageModelWithSenderId:senderId displayName:senderDisplayName text:text dateStr:dateStr] ;
     NSDictionary * keyValues = model.mj_keyValues ;
-    
-    [self.chatDataArray addObject:keyValues];
     
     // 与服务器通信 , chat 为自定义事件（与服务器的事件一样才能接收到）
     [[SocketIOClient shareSocketIOClient] emit:@"chat" with:@[keyValues]];
