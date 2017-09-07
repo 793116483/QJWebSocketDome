@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import "ViewController.h"
+#import "SocketIOClient+QJSocket.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +20,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // 连接
+    [[SocketIOClient shareSocketIOClient] connectWithSuccessBlock:^(NSArray *data) {
+       
+        NSLog(@"socket 连接成功 ，data = %@",data);
+    }];
+    
+    
+    self.window = [[UIWindow alloc] init];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    UINavigationController * navc = [[UINavigationController alloc] init];
+    navc.view.backgroundColor = [UIColor whiteColor];
+    
+    ViewController * vc = [[ViewController alloc] init];
+    [navc pushViewController:vc animated:YES];
+    
+    self.window.rootViewController = navc ;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
