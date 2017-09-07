@@ -13,6 +13,8 @@
 		F246F8571F61198E003C7F2E /* QJMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F246F8561F61198E003C7F2E /* QJMessagesViewController.m */; };
 		F246F85A1F611D8C003C7F2E /* QJUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F246F8591F611D8C003C7F2E /* QJUserModel.m */; };
 		F246F85D1F612675003C7F2E /* QJMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F246F85C1F612675003C7F2E /* QJMessage.m */; };
+		F26500381F61410C006D6B44 /* QJHandleMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F26500371F61410C006D6B44 /* QJHandleMessageModel.m */; };
+		F265003A1F614321006D6B44 /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26500391F614321006D6B44 /* MJExtension.framework */; };
 		F2E804B91F6036AF00BD5D1F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804B81F6036AF00BD5D1F /* main.m */; };
 		F2E804BC1F6036AF00BD5D1F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804BB1F6036AF00BD5D1F /* AppDelegate.m */; };
 		F2E804BF1F6036AF00BD5D1F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E804BE1F6036AF00BD5D1F /* ViewController.m */; };
@@ -56,6 +58,9 @@
 		F246F8591F611D8C003C7F2E /* QJUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJUserModel.m; sourceTree = "<group>"; };
 		F246F85B1F612675003C7F2E /* QJMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJMessage.h; sourceTree = "<group>"; };
 		F246F85C1F612675003C7F2E /* QJMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJMessage.m; sourceTree = "<group>"; };
+		F26500361F61410C006D6B44 /* QJHandleMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJHandleMessageModel.h; sourceTree = "<group>"; };
+		F26500371F61410C006D6B44 /* QJHandleMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJHandleMessageModel.m; sourceTree = "<group>"; };
+		F26500391F614321006D6B44 /* MJExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJExtension.framework; path = "Pods/../build/Debug-iphoneos/MJExtension/MJExtension.framework"; sourceTree = "<group>"; };
 		F2E804B41F6036AF00BD5D1F /* socketClientDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socketClientDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E804B81F6036AF00BD5D1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2E804BA1F6036AF00BD5D1F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F265003A1F614321006D6B44 /* MJExtension.framework in Frameworks */,
 				F246F8531F611839003C7F2E /* JSQMessagesViewController.framework in Frameworks */,
 				F246F8541F611839003C7F2E /* JSQSystemSoundPlayer.framework in Frameworks */,
 				F2E804EF1F603A9800BD5D1F /* SocketIO.framework in Frameworks */,
@@ -112,6 +118,7 @@
 		2F942B79219BBFDB5E73295D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F26500391F614321006D6B44 /* MJExtension.framework */,
 				F246F8511F611839003C7F2E /* JSQMessagesViewController.framework */,
 				F246F8521F611839003C7F2E /* JSQSystemSoundPlayer.framework */,
 				F2E804ED1F603A9800BD5D1F /* SocketIO.framework */,
@@ -148,6 +155,8 @@
 				F246F8591F611D8C003C7F2E /* QJUserModel.m */,
 				F246F85B1F612675003C7F2E /* QJMessage.h */,
 				F246F85C1F612675003C7F2E /* QJMessage.m */,
+				F26500361F61410C006D6B44 /* QJHandleMessageModel.h */,
+				F26500371F61410C006D6B44 /* QJHandleMessageModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -434,6 +443,7 @@
 				F2E804BC1F6036AF00BD5D1F /* AppDelegate.m in Sources */,
 				F2E804C51F6036AF00BD5D1F /* socketClientDome.xcdatamodeld in Sources */,
 				F2E804B91F6036AF00BD5D1F /* main.m in Sources */,
+				F26500381F61410C006D6B44 /* QJHandleMessageModel.m in Sources */,
 				F246F85D1F612675003C7F2E /* QJMessage.m in Sources */,
 				F2E804F31F6055D000BD5D1F /* SocketIOClient+QJSocket.m in Sources */,
 			);
@@ -590,6 +600,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/JSQMessagesViewController",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/JSQSystemSoundPlayer",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/MJExtension",
 				);
 				INFOPLIST_FILE = socketClientDome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -608,6 +619,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/JSQMessagesViewController",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/JSQSystemSoundPlayer",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/MJExtension",
 				);
 				INFOPLIST_FILE = socketClientDome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

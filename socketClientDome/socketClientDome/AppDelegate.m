@@ -21,13 +21,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    // 连接
-    [[SocketIOClient shareSocketIOClient] connectWithSuccessBlock:^(NSArray *data) {
-       
-        NSLog(@"socket 连接成功 ，data = %@",data);
-    }];
-    
-    
     self.window = [[UIWindow alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -40,6 +33,14 @@
     self.window.rootViewController = navc ;
     
     [self.window makeKeyAndVisible];
+    
+    // 连接
+    [[SocketIOClient shareSocketIOClient] connectWithSuccessBlock:^(NSArray *data) {
+        
+        NSLog(@"socket 连接成功 ，data = %@",data);
+        vc.chatDataArray = data.firstObject ;
+        
+    }];
     
     return YES;
 }

@@ -48,9 +48,8 @@
 }
 -(void)loginBtnDidClicked
 {
-    QJMessagesViewController * messagesVc = [[QJMessagesViewController alloc] init];
-    
-    messagesVc.userModel = [QJUserModel userModelWithName:self.accountTF.text];
+    QJUserModel * userModel = [QJUserModel userModelWithName:self.accountTF.text];
+    QJMessagesViewController * messagesVc = [QJMessagesViewController messagesViewControllerWithUserModel:userModel chatDataArray:self.chatDataArray];
     
     [self.navigationController pushViewController:messagesVc animated:YES];
 }
@@ -67,7 +66,6 @@
         NSLog(@"data = %@ ",data);
         
         [socketIOClient emit:@"chat" with:@[@"how are you?"]];
-        
     }];
     
     [socketIOClient on:@"chat" callback:^(NSArray * data, SocketAckEmitter * ack) {

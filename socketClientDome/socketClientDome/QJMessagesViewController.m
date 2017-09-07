@@ -11,14 +11,36 @@
 #import "QJUserModel.h"
 #import "QJMessage.h"
 #import "SocketIOClient+QJSocket.h"
+#import "QJHandleMessageModel.h"
+#import <MJExtension/MJExtension.h>
 
 @interface QJMessagesViewController ()
+
+@property (nonatomic , strong)QJUserModel * userModel ;
 
 @property (nonatomic , strong) NSMutableArray<QJMessage *> * messageDatas ;
 
 @end
 
 @implementation QJMessagesViewController
+
++(instancetype)messagesViewControllerWithUserModel:(QJUserModel *)userModel chatDataArray:(NSArray<NSDictionary *> *)chatDataArray
+{
+    QJMessagesViewController * messagesVc = [self messagesViewController];
+    
+    messagesVc.userModel = userModel ;
+    
+    for (NSDictionary * dic in chatDataArray) {
+        QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:dic];
+        BOOL isCurrentUser = [model.senderId isEqualToString:userModel.userId];
+        
+        QJMessage * message = [QJMessage messageWithSenderId:model.senderId displayName:model.displayName text:model.text date:[messagesVc dateWithDateStr:model.dateStr] isCurrentUser:isCurrentUser];
+        
+        [messagesVc.messageDatas addObject:message];
+    }
+    
+    return messagesVc ;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,11 +49,56 @@
     
     self.title = @"聊天";
     
-    // 其他人的回应
+    [self observerOtherUserCallBackMessage];
+}
+
+// 监听其他人的回应信息
+-(void)observerOtherUserCallBackMessage
+{
+    // socket 监听其他人的回应信息
     [[SocketIOClient shareSocketIOClient] on:@"chat" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
         
+        NSDictionary * keyValues = data.firstObject ;
+        
+        QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:keyValues];
+        
+        QJMessage * message = [QJMessage messageWithSenderId:model.senderId displayName:model.displayName text:model.text date:[self dateWithDateStr:model.dateStr] isCurrentUser:NO];
+        [self.messageDatas addObject:message];
+        
+        [self.collectionView reloadData];
     }];
 }
+
+#pragma mark -  NSDate 类型的时间 转成 NSString 类型的时间 互换
+
+/**
+ 把 NSDate 类型的时间 转成 NSString 类型的时间
+
+ @param date NSDate 类型时间
+ @return NSString 类型的时间，格式为 yyyy-MM-dd HH:mm:ss
+ */
+-(NSString *)dateStringWithDate:(NSDate *)date
+{
+    NSDateFormatter * dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    
+    return [dateFormat stringFromDate:date];
+}
+
+/**
+ 把 NSString 类型的时间 转成 NSDate 类型的时间
+ 
+ @param dateStr NSString 类型时间
+ @return NSDate 类型的时间，格式为 yyyy-MM-dd HH:mm:ss
+ */
+-(NSDate *)dateWithDateStr:(NSString *)dateStr
+{
+    NSDateFormatter * dateFormat = [[NSDateFormatter alloc] init];
+    dateFormat.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    
+    return [dateFormat dateFromString:dateStr];
+}
+
 
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -94,17 +161,21 @@
     return message.msgAvatarImage ;
 }
 
-// 按了发送信息按钮
+// 按了发送信息按钮 , 这里是按正常的用户逻辑是 需要把信息发到服务器之后才显示
 -(void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date
 {
+    // 添加 当前用户发出的数据
     QJMessage * message = [QJMessage messageWithSenderId:senderId displayName:senderDisplayName text:text date:date isCurrentUser:YES];
-    
     [self.messageDatas addObject:message];
-    
     [self.collectionView reloadData];
     
-    // 与服务器通信
-    [[SocketIOClient shareSocketIOClient] emit:@"chat" with:@[text]];
+    // 将发送的信息 转成 字典 传到服务器上
+    NSString * dateStr = [self dateStringWithDate:date];
+    QJHandleMessageModel * model = [QJHandleMessageModel handleMessageModelWithSenderId:senderId displayName:senderDisplayName text:text dateStr:dateStr] ;
+    NSDictionary * keyValues = model.mj_keyValues ;
+    
+    // 与服务器通信 , chat 为自定义事件（与服务器的事件一样才能接收到）
+    [[SocketIOClient shareSocketIOClient] emit:@"chat" with:@[keyValues]];
 }
 
 @end

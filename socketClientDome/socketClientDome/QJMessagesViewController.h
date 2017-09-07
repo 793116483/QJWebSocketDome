@@ -12,6 +12,6 @@
 
 @interface QJMessagesViewController : JSQMessagesViewController
 
-@property (nonatomic , strong)QJUserModel * userModel ;
++(instancetype)messagesViewControllerWithUserModel:(QJUserModel *)userModel chatDataArray:(NSArray<NSDictionary *> *)chatDataArray ;
 
 @end
