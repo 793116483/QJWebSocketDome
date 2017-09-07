@@ -14,6 +14,8 @@
 
 @interface ViewController ()<QJMessagesViewControllerDelegate>
 
+@property(nonatomic , strong) QJUserModel * userModel ;
+
 @property(nonatomic , strong) UITextField * accountTF ;
 @property(nonatomic , strong) UIButton * loginBtn ;
 
@@ -49,6 +51,11 @@
 -(void)loginBtnDidClicked
 {
     QJUserModel * userModel = [QJUserModel userModelWithName:self.accountTF.text];
+    if ([userModel.userName isEqualToString:self.userModel.userName]) {
+        userModel.userId = self.userModel.userId ;
+    }
+    self.userModel = userModel ;
+    
     QJMessagesViewController * messagesVc = [QJMessagesViewController messagesViewControllerWithUserModel:userModel chatDataArray:self.chatDataArray];
     messagesVc.delegate = self ;
     

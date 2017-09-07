@@ -36,7 +36,7 @@
         [messagesVc.chatDataArray addObject:dic];
         
         QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:dic];
-        BOOL isCurrentUser = [model.displayName isEqualToString:userModel.userName];
+        BOOL isCurrentUser = [model.senderId isEqualToString:userModel.userId];
         
         QJMessage * message = [QJMessage messageWithSenderId:model.senderId displayName:model.displayName text:model.text date:[messagesVc dateWithDateStr:model.dateStr] isCurrentUser:isCurrentUser];
         
