@@ -9,6 +9,8 @@ var socketIo = require('socket.io');
 // 创建 socket 端 
 var serverSocket = socketIo(server);
 
+var dataArray = [];
+
 serverSocket.on('connection',function listener(clietSocket){
 
     console.log('建立连接成功');
@@ -16,13 +18,19 @@ serverSocket.on('connection',function listener(clietSocket){
     // 客户端发送数据
     // serverSocket.emit : 表示广播，给所有连接到服务器的客户端发送数据
     //  clietSocket.emit  : 给当前的客户端发送数据
-    clietSocket.emit('connection','success');
+    clietSocket.emit('connection',dataArray);
     
     // 必须在完成连接后，监听 clientSocket 的 chat 事件 
     clietSocket.on('chat',function listener(data){
         console.log('========',data);
 
-        clietSocket.emit('chat','Im fine ,thanks!!');
+        dataArray.push(data);
+
+        var text = new String('好的好的');
+        var callBackDic = {'senderId':'183628','displayName':'Jack','text':text,'dateStr':data.dateStr,'isCurrentUser':0};
+        dataArray.push(callBackDic);        
+
+        clietSocket.emit('chat',callBackDic);
         
     });
 });
