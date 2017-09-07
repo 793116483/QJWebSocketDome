@@ -50,9 +50,8 @@
 {
     [super viewDidDisappear:animated];
     
-    if ([self.delegate respondsToSelector:@selector(messagesVc:didChatCompleteData:)]) {
-        [self.delegate messagesVc:self didChatCompleteData:self.chatDataArray];
-    }
+    // 告诉服务器, 用户离开房间事件
+    [[SocketIOClient shareSocketIOClient] emit:@"leave" with:@[self.userModel.roomName]];
 }
 
 - (void)viewDidLoad {
@@ -76,8 +75,9 @@
         [self.chatDataArray addObject:keyValues];
 
         QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:keyValues];
-        
-        QJMessage * message = [QJMessage messageWithSenderId:model.senderId displayName:model.displayName text:model.text date:[self dateWithDateStr:model.dateStr] isCurrentUser:NO];
+        BOOL isCurrentUser = [model.senderId isEqualToString:self.userModel.userId];
+
+        QJMessage * message = [QJMessage messageWithSenderId:model.senderId displayName:model.displayName text:model.text date:[self dateWithDateStr:model.dateStr] isCurrentUser:isCurrentUser];
         [self.messageDatas addObject:message];
         
         [self.collectionView reloadData];
@@ -176,7 +176,7 @@
 {
     // 将发送的信息 转成 字典 传到服务器上
     NSString * dateStr = [self dateStringWithDate:date];
-    QJHandleMessageModel * model = [QJHandleMessageModel handleMessageModelWithSenderId:senderId displayName:senderDisplayName text:text dateStr:dateStr] ;
+    QJHandleMessageModel * model = [QJHandleMessageModel handleMessageModelWithSenderId:senderId displayName:senderDisplayName text:text dateStr:dateStr roomName:self.userModel.roomName] ;
     NSDictionary * keyValues = model.mj_keyValues ;
     
     // 与服务器通信 , chat 为自定义事件（与服务器的事件一样才能接收到）

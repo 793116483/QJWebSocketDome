@@ -38,7 +38,6 @@
     [[SocketIOClient shareSocketIOClient] connectWithSuccessBlock:^(NSArray *data) {
         
         NSLog(@"socket 连接成功 ，data = %@",data);
-        vc.chatDataArray = data.firstObject ;
         
     }];
     

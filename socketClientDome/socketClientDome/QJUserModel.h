@@ -14,6 +14,8 @@
 
 @property (nonatomic , copy) NSString * userId ;
 
-+(instancetype)userModelWithName:(NSString *)userName ;
+@property (nonatomic , copy) NSString * roomName ;
+
++(instancetype)userModelWithName:(NSString *)userName roomName:(NSString *)roomName;
 
 @end

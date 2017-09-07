@@ -8,18 +8,9 @@
 
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
 
-@class QJUserModel , QJMessagesViewController;
-
-@protocol QJMessagesViewControllerDelegate <NSObject>
-
-@required
--(void)messagesVc:(QJMessagesViewController *)msgVc didChatCompleteData:(NSArray<NSDictionary *> *)chatDataArray ;
-
-@end
+@class QJUserModel ;
 
 @interface QJMessagesViewController : JSQMessagesViewController
-
-@property(nonatomic , weak) id<QJMessagesViewControllerDelegate> delegate ;
 
 +(instancetype)messagesViewControllerWithUserModel:(QJUserModel *)userModel chatDataArray:(NSArray<NSDictionary *> *)chatDataArray ;
 

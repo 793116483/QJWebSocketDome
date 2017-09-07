@@ -54,7 +54,7 @@ serverSocket.on('connection',function listener(clietSocket){
         }
         clietSocket.emit('joinRoom',roomRecords);
 
-        console.log('====',roomName);                     
+        console.log('当前客户端加入房间',roomName);                     
     });
     
 

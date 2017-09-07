@@ -10,11 +10,12 @@
 
 @implementation QJUserModel
 
-+(instancetype)userModelWithName:(NSString *)userName
++(instancetype)userModelWithName:(NSString *)userName roomName:(NSString *)roomName
 {
     QJUserModel * userModel = [[self alloc] init];
     
     userModel.userName = userName ;
+    userModel.roomName = roomName ;
     userModel.userId = [NSString stringWithFormat:@"%d",arc4random_uniform(5000)+arc4random_uniform(500)];
     
     return userModel ;

@@ -18,7 +18,9 @@
 
 @property (nonatomic , copy) NSString * dateStr ;
 
-+(instancetype)handleMessageModelWithSenderId:(NSString *)senderId displayName:(NSString *)displayName text:(NSString *)text dateStr:(NSString*)dateStr ;
+@property (nonatomic , copy) NSString * roomName ;
+
++(instancetype)handleMessageModelWithSenderId:(NSString *)senderId displayName:(NSString *)displayName text:(NSString *)text dateStr:(NSString*)dateStr roomName:(NSString *)roomName;
 
 
 @end
