@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-
 #import "SocketIOClient+QJSocket.h"
 
 @interface ViewController ()
@@ -19,6 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+}
+
+
+
+// 测式 客户端的 Socket 与 服务端 Socket 通信
+-(void)testSocketIOClient
+{
     SocketIOClient * socketIOClient = [SocketIOClient shareSocketIOClient] ;
     
     [socketIOClient connectWithSuccessBlock:^(NSArray *data){
@@ -34,11 +41,6 @@
     }];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end
