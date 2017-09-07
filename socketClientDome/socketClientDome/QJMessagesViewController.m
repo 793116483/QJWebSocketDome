@@ -17,6 +17,7 @@
 @interface QJMessagesViewController ()
 
 @property (nonatomic , strong)QJUserModel * userModel ;
+@property (nonatomic , strong) NSMutableArray<NSDictionary *> * chatDataArray ;
 
 @property (nonatomic , strong) NSMutableArray<QJMessage *> * messageDatas ;
 
@@ -31,6 +32,9 @@
     messagesVc.userModel = userModel ;
     
     for (NSDictionary * dic in chatDataArray) {
+        
+        [messagesVc.chatDataArray addObject:dic];
+        
         QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:dic];
         BOOL isCurrentUser = [model.senderId isEqualToString:userModel.userId];
         
@@ -40,6 +44,15 @@
     }
     
     return messagesVc ;
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    if ([self.delegate respondsToSelector:@selector(messagesVc:didChatCompleteData:)]) {
+        [self.delegate messagesVc:self didChatCompleteData:self.chatDataArray];
+    }
 }
 
 - (void)viewDidLoad {
@@ -60,6 +73,8 @@
         
         NSDictionary * keyValues = data.firstObject ;
         
+        [self.chatDataArray addObject:keyValues];
+
         QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:keyValues];
         
         QJMessage * message = [QJMessage messageWithSenderId:model.senderId displayName:model.displayName text:model.text date:[self dateWithDateStr:model.dateStr] isCurrentUser:NO];
@@ -108,14 +123,6 @@
 
 
 #pragma mark - JSQMessagesCollectionViewDataSource
--(NSMutableArray *)messageDatas
-{
-    if (!_messageDatas) {
-        _messageDatas = [NSMutableArray array];
-    }
-    
-    return _messageDatas ;
-}
 
 // 本人的聊天昵称
 - (NSString *)senderDisplayName
@@ -174,8 +181,30 @@
     QJHandleMessageModel * model = [QJHandleMessageModel handleMessageModelWithSenderId:senderId displayName:senderDisplayName text:text dateStr:dateStr] ;
     NSDictionary * keyValues = model.mj_keyValues ;
     
+    [self.chatDataArray addObject:keyValues];
+    
     // 与服务器通信 , chat 为自定义事件（与服务器的事件一样才能接收到）
     [[SocketIOClient shareSocketIOClient] emit:@"chat" with:@[keyValues]];
 }
+
+#pragma mark - getter
+-(NSMutableArray *)messageDatas
+{
+    if (!_messageDatas) {
+        _messageDatas = [NSMutableArray array];
+    }
+    
+    return _messageDatas ;
+}
+
+-(NSMutableArray<NSDictionary *> *)chatDataArray
+{
+    if (!_chatDataArray) {
+        _chatDataArray = [NSMutableArray array];
+    }
+    
+    return _chatDataArray ;
+}
+
 
 @end

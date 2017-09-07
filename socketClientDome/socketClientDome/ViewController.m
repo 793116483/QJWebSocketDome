@@ -12,7 +12,7 @@
 #import "QJMessagesViewController.h"
 #import "QJUserModel.h"
 
-@interface ViewController ()
+@interface ViewController ()<QJMessagesViewControllerDelegate>
 
 @property(nonatomic , strong) UITextField * accountTF ;
 @property(nonatomic , strong) UIButton * loginBtn ;
@@ -50,12 +50,19 @@
 {
     QJUserModel * userModel = [QJUserModel userModelWithName:self.accountTF.text];
     QJMessagesViewController * messagesVc = [QJMessagesViewController messagesViewControllerWithUserModel:userModel chatDataArray:self.chatDataArray];
+    messagesVc.delegate = self ;
     
     [self.navigationController pushViewController:messagesVc animated:YES];
 }
 
+#pragma mark - QJMessagesViewControllerDelegate
+-(void)messagesVc:(QJMessagesViewController *)msgVc didChatCompleteData:(NSArray<NSDictionary *> *)chatDataArray
+{
+    self.chatDataArray = chatDataArray ;
+}
 
 
+#pragma mark - other somthing
 // 测式 客户端的 Socket 与 服务端 Socket 通信
 -(void)testSocketIOClient
 {
