@@ -130,6 +130,37 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F26500331F613FC8006D6B44 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F2E804BD1F6036AF00BD5D1F /* ViewController.h */,
+				F2E804BE1F6036AF00BD5D1F /* ViewController.m */,
+				F246F8551F61198E003C7F2E /* QJMessagesViewController.h */,
+				F246F8561F61198E003C7F2E /* QJMessagesViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		F26500341F613FE3006D6B44 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F246F8581F611D8C003C7F2E /* QJUserModel.h */,
+				F246F8591F611D8C003C7F2E /* QJUserModel.m */,
+				F246F85B1F612675003C7F2E /* QJMessage.h */,
+				F246F85C1F612675003C7F2E /* QJMessage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F26500351F614006006D6B44 /* QJSocket */ = {
+			isa = PBXGroup;
+			children = (
+				F2E804F11F6055D000BD5D1F /* SocketIOClient+QJSocket.h */,
+				F2E804F21F6055D000BD5D1F /* SocketIOClient+QJSocket.m */,
+			);
+			name = QJSocket;
+			sourceTree = "<group>";
+		};
 		F2E804AB1F6036AF00BD5D1F = {
 			isa = PBXGroup;
 			children = (
@@ -155,24 +186,17 @@
 		F2E804B61F6036AF00BD5D1F /* socketClientDome */ = {
 			isa = PBXGroup;
 			children = (
+				F26500351F614006006D6B44 /* QJSocket */,
+				F26500341F613FE3006D6B44 /* Model */,
+				F26500331F613FC8006D6B44 /* ViewController */,
 				F2E804BA1F6036AF00BD5D1F /* AppDelegate.h */,
 				F2E804BB1F6036AF00BD5D1F /* AppDelegate.m */,
-				F2E804BD1F6036AF00BD5D1F /* ViewController.h */,
-				F2E804BE1F6036AF00BD5D1F /* ViewController.m */,
 				F2E804C01F6036AF00BD5D1F /* Main.storyboard */,
 				F2E804C61F6036AF00BD5D1F /* Assets.xcassets */,
 				F2E804C81F6036AF00BD5D1F /* LaunchScreen.storyboard */,
 				F2E804CB1F6036AF00BD5D1F /* Info.plist */,
 				F2E804C31F6036AF00BD5D1F /* socketClientDome.xcdatamodeld */,
 				F2E804B71F6036AF00BD5D1F /* Supporting Files */,
-				F2E804F11F6055D000BD5D1F /* SocketIOClient+QJSocket.h */,
-				F2E804F21F6055D000BD5D1F /* SocketIOClient+QJSocket.m */,
-				F246F8551F61198E003C7F2E /* QJMessagesViewController.h */,
-				F246F8561F61198E003C7F2E /* QJMessagesViewController.m */,
-				F246F8581F611D8C003C7F2E /* QJUserModel.h */,
-				F246F8591F611D8C003C7F2E /* QJUserModel.m */,
-				F246F85B1F612675003C7F2E /* QJMessage.h */,
-				F246F85C1F612675003C7F2E /* QJMessage.m */,
 			);
 			path = socketClientDome;
 			sourceTree = "<group>";
