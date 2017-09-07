@@ -64,21 +64,21 @@
 
 #pragma mark - other somthing
 // 测式 客户端的 Socket 与 服务端 Socket 通信
--(void)testSocketIOClient
-{
-    SocketIOClient * socketIOClient = [SocketIOClient shareSocketIOClient] ;
-    
-    [socketIOClient connectWithSuccessBlock:^(NSArray *data){
-        
-        NSLog(@"data = %@ ",data);
-        
-        [socketIOClient emit:@"chat" with:@[@"how are you?"]];
-    }];
-    
-    [socketIOClient on:@"chat" callback:^(NSArray * data, SocketAckEmitter * ack) {
-        NSLog(@"data = %@ , ack = %@",data,ack);
-    }];
-}
+//-(void)testSocketIOClient
+//{
+//    SocketIOClient * socketIOClient = [SocketIOClient shareSocketIOClient] ;
+//    
+//    [socketIOClient connectWithSuccessBlock:^(NSArray *data){
+//        
+//        NSLog(@"data = %@ ",data);
+//        
+//        [socketIOClient emit:@"chat" with:@[@"how are you?"]];
+//    }];
+//    
+//    [socketIOClient on:@"chat" callback:^(NSArray * data, SocketAckEmitter * ack) {
+//        NSLog(@"data = %@ , ack = %@",data,ack);
+//    }];
+//}
 
 
 
