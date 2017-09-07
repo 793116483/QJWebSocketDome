@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B20AE93BAED63BA75B74EFAA5554507D"
+               BlueprintIdentifier = "B6C53AA2D6C60C55586B709DD6400C6D"
                BuildableName = "Pods_socketClientDome.framework"
                BlueprintName = "Pods-socketClientDome"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B20AE93BAED63BA75B74EFAA5554507D"
+            BlueprintIdentifier = "B6C53AA2D6C60C55586B709DD6400C6D"
             BuildableName = "Pods_socketClientDome.framework"
             BlueprintName = "Pods-socketClientDome"
             ReferencedContainer = "container:Pods.xcodeproj">
