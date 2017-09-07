@@ -185,6 +185,9 @@
     
     // 与服务器通信 , chat 为自定义事件（与服务器的事件一样才能接收到）
     [[SocketIOClient shareSocketIOClient] emit:@"chat" with:@[keyValues]];
+    
+    // 完成发送事件，清空输入框的内容
+    [self finishSendingMessageAnimated:YES];
 }
 
 #pragma mark - getter
