@@ -88,18 +88,27 @@
 {
     // 进入房间时，拿到之前所有的聊天记录
     // 注意：如果这个事件添加多次，则 callback 的 block 会执行多次
+    __weak typeof(self) weakSlef = self ;
+    
     [[SocketIOClient shareSocketIOClient] on:@"joinRoom" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
         
         // 拿到当前房间的聊天记录
         if (![data.firstObject isKindOfClass:[NSNull class]]) {
-            self.chatDataArray = data.firstObject ;
+            weakSlef.chatDataArray = data.firstObject ;
         }
         
-        // 跳转页面
-        QJMessagesViewController * messagesVc = [QJMessagesViewController messagesViewControllerWithUserModel:self.userModel chatDataArray:self.chatDataArray];
-        
-        [self.navigationController pushViewController:messagesVc animated:YES];
+        // 跳转到聊天房间页面
+        [weakSlef jumpToMessagesVc];
     }];
+}
+
+// 跳转到聊天房间页面
+-(void)jumpToMessagesVc
+{
+    // 跳转页面
+    QJMessagesViewController * messagesVc = [QJMessagesViewController messagesViewControllerWithUserModel:self.userModel chatDataArray:self.chatDataArray];
+    
+    [self.navigationController pushViewController:messagesVc animated:YES];
 }
 
 #pragma mark - other somthing

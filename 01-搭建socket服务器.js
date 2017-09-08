@@ -67,14 +67,6 @@ serverSocket.on('connection',function listener(clietSocket){
 
         // 一个客户端发出的信息在当前的房间内都可以接收到 data 数据
         serverSocket.to(data.roomName).emit('chat',data);
-
-
-        // // 设置自动回应的数据 用于测式，现在不用了，用两台设备就可以通信了
-        // var text = new String('好的好的');
-        // var callBackDic = {'senderId':'183628','displayName':'Jack','text':text,'dateStr':data.dateStr,'isCurrentUser':0};
-        // dataArray.push(callBackDic);        
-        // // 向所有连接服务器的发送数据
-        // serverSocket.emit('chat',callBackDic);
         
         console.log('========',data);        
     });

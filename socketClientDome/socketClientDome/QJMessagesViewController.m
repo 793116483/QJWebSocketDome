@@ -25,6 +25,11 @@
 
 @implementation QJMessagesViewController
 
+//-(void)dealloc
+//{
+//    NSLog(@"%s",__func__);
+//}
+
 +(instancetype)messagesViewControllerWithUserModel:(QJUserModel *)userModel chatDataArray:(NSArray<NSDictionary *> *)chatDataArray
 {
     QJMessagesViewController * messagesVc = [self messagesViewController];
@@ -68,22 +73,24 @@
 -(void)observerOtherUserCallBackMessage
 {
     // socket 监听其他人的回应信息
+    __weak typeof(self) weakSlef = self ;
+
     [[SocketIOClient shareSocketIOClient] on:@"chat" callback:^(NSArray * _Nonnull data, SocketAckEmitter * _Nonnull ack) {
         
         NSDictionary * keyValues = data.firstObject ;
         
-        [self.chatDataArray addObject:keyValues];
+        [weakSlef.chatDataArray addObject:keyValues];
 
         QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:keyValues];
-        BOOL isCurrentUser = [model.senderId isEqualToString:self.userModel.userId];
+        BOOL isCurrentUser = [model.senderId isEqualToString:weakSlef.userModel.userId];
 
-        QJMessage * message = [QJMessage messageWithSenderId:model.senderId displayName:model.displayName text:model.text date:[self dateWithDateStr:model.dateStr] isCurrentUser:isCurrentUser];
-        [self.messageDatas addObject:message];
+        QJMessage * message = [QJMessage messageWithSenderId:model.senderId displayName:model.displayName text:model.text date:[weakSlef dateWithDateStr:model.dateStr] isCurrentUser:isCurrentUser];
+        [weakSlef.messageDatas addObject:message];
         
-        [self.collectionView reloadData];
+        [weakSlef.collectionView reloadData];
         
         // 完成接收信息，让接收到最新的信息显示在底部，信息不会被遮档
-        [self finishReceivingMessageAnimated:YES];
+        [weakSlef finishReceivingMessageAnimated:YES];
     }];
 }
 
