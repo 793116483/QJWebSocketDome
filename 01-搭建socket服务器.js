@@ -6,7 +6,7 @@ var server = http.createServer();
 
 // 引入 socket 框架
 var socketIo = require('socket.io');
-// 创建 socket 端 
+// 创建 socket 服务端 
 var serverSocket = socketIo(server);
 
 // 记录聊天房间数量
