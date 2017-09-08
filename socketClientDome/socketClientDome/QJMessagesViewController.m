@@ -17,7 +17,6 @@
 @interface QJMessagesViewController ()
 
 @property (nonatomic , strong)QJUserModel * userModel ;
-@property (nonatomic , strong) NSMutableArray<NSDictionary *> * chatDataArray ;
 
 @property (nonatomic , strong) NSMutableArray<QJMessage *> * messageDatas ;
 
@@ -37,8 +36,6 @@
     messagesVc.userModel = userModel ;
     
     for (NSDictionary * dic in chatDataArray) {
-        
-        [messagesVc.chatDataArray addObject:dic];
         
         QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:dic];
         BOOL isCurrentUser = [model.senderId isEqualToString:userModel.userId];
@@ -79,8 +76,7 @@
         
         NSDictionary * keyValues = data.firstObject ;
         
-        [weakSlef.chatDataArray addObject:keyValues];
-
+        
         QJHandleMessageModel * model = [QJHandleMessageModel mj_objectWithKeyValues:keyValues];
         BOOL isCurrentUser = [model.senderId isEqualToString:weakSlef.userModel.userId];
 
@@ -201,15 +197,6 @@
     }
     
     return _messageDatas ;
-}
-
--(NSMutableArray<NSDictionary *> *)chatDataArray
-{
-    if (!_chatDataArray) {
-        _chatDataArray = [NSMutableArray array];
-    }
-    
-    return _chatDataArray ;
 }
 
 

@@ -21,7 +21,8 @@
 
 
 @property(nonatomic , strong) UITextField * accountTF ;
-@property(nonatomic , strong) UIButton * loginBtn ;
+@property(nonatomic , strong) UIButton * roomAbtn ;
+@property(nonatomic , strong) UIButton * roomBbtn ;
 
 @end
 
@@ -48,21 +49,21 @@
     self.accountTF.layer.borderColor = [UIColor grayColor].CGColor;
     [self.view addSubview:self.accountTF];
     
-    self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.loginBtn.frame = CGRectMake(80, 180, 80, 50);
-    self.loginBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [self.loginBtn setTitle:@"聊天房间A" forState:UIControlStateNormal];
-    [self.loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.loginBtn addTarget:self action:@selector(loginBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.loginBtn];
+    self.roomAbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.roomAbtn.frame = CGRectMake(80, 180, 80, 50);
+    self.roomAbtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [self.roomAbtn setTitle:@"聊天房间A" forState:UIControlStateNormal];
+    [self.roomAbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.roomAbtn addTarget:self action:@selector(loginBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.roomAbtn];
     
-    self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.loginBtn.frame = CGRectMake(180, 180, 80, 50);
-    self.loginBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [self.loginBtn setTitle:@"聊天房间B" forState:UIControlStateNormal];
-    [self.loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.loginBtn addTarget:self action:@selector(loginBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.loginBtn];
+    self.roomBbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.roomBbtn.frame = CGRectMake(180, 180, 80, 50);
+    self.roomBbtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [self.roomBbtn setTitle:@"聊天房间B" forState:UIControlStateNormal];
+    [self.roomBbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.roomBbtn addTarget:self action:@selector(loginBtnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.roomBbtn];
     
 }
 -(void)loginBtnDidClicked:(UIButton *)btn
